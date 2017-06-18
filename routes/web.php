@@ -16,6 +16,10 @@ Route::get('about', 'PagesController@getAbout');
 Route::get('contact', 'PagesController@getContact');
 
 
+Route::get('recording', 'RecordingsController@getIndex');
+Route::get('recording/listen', 'RecordingsController@getlisten');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

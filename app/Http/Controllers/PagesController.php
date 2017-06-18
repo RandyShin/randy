@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cdr;
+use Illuminate\Support\Facades\Input;
+use DB;
 
 class PagesController extends Controller
 {
+
+
     public function getIndex() {
         return view('pages.welcome');
     }
@@ -17,6 +22,5 @@ class PagesController extends Controller
     public function getContact() {
         return view('pages.contact');
     }
-
 
 }
