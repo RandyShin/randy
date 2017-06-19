@@ -96,7 +96,19 @@
                         </td>
 
                         <td>
-                            <button type="submit" class="btn btn-search btn-sm" name="btn_search">
+                            <select class="form-control" name="disposition">
+                                <option value="">ALL</option>
+                                <option value="NO ANSWER" <?=Request::input('disposition') == 'NO ANSWER' ? 'selected' : ''?>>NO ANSWER</option>
+                                <option value="ANSWERED" <?=Request::input('disposition') == 'ANSWERED' ? 'selected' : ''?>>ANSWERED</option>
+                                <option value="FAILED" <?=Request::input('disposition') == 'FAILED' ? 'selected' : ''?>>FAILED</option>
+                                <option value="BUSY" <?=Request::input('disposition') == 'BUSY' ? 'selected' : ''?>>BUSY</option>
+                                <option value="CONGESTION" <?=Request::input('disposition') == 'CONGESTION' ? 'selected' : ''?>>CONGESTION</option>
+                            </select>
+                        </td>
+
+
+                        <td>
+                            <button type="submit" class="btn btn-search" name="btn_search">
                                 <i class="fa fa-search"></i>Search
                             </button>
                         </td>
@@ -161,7 +173,7 @@
                                     <th>{{ substr(($cdr->calldate), 10, 9) }}</th>
                                     <th>{{ substr(($cdr->calldate), 0, 10) }}</th>
                                     {{--<th><a href="http://{{$rec70}}/monitor/{{$file_source }}">듣기</a></th>--}}
-                                    <th><input type="button" value="듣기" onclick="window.open('/recording/listen?file_source={{$file_source}}&rec_server={{$rec70}}', '팝업창 이름', 'width=300, height=300')"></th>
+                                    <th align="center" ><input type="button" class="btn btn-default btn-sm" value="듣기" onclick="window.open('/recording/listen?file_source={{$file_source}}&rec_server={{$rec70}}', '팝업창 이름', 'width=300, height=300')"></th>
                                     {{--<th><a href="javascript:void(window.open('/recording/listen?file_source={{$file_source}}', '_blank','width=300, height=100'))">듣기</a></th>--}}
 
                                     {{--{{ dd ($file_source)  }}--}}

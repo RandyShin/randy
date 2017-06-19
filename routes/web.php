@@ -18,6 +18,8 @@ Route::get('contact', 'PagesController@getContact');
 
 Route::get('recording', 'RecordingsController@getIndex');
 Route::get('recording/listen', 'RecordingsController@getlisten');
+Route::get('recording/mem_list', 'RecordingsController@getmem_list');
+
 
 
 Auth::routes();

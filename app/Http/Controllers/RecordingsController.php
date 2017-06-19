@@ -59,19 +59,9 @@ class RecordingsController extends Controller
         }
 
 
-
-
-
-
-
         $cdrs = $qry
             ->orderBy('calldate', 'DESC')
             ->paginate(10);
-
-
-
-
-
 
         return view('recordings.index')
             ->withRec70($rec70)
@@ -86,5 +76,38 @@ class RecordingsController extends Controller
         return view('recordings.listen');
     }
 
+    public function getmem_list() {
 
+
+       $rec70 = "175.117.145.70";
+
+
+        $calldate = \Request::get('calldate');
+        $phone_no = \Request::get('phone_no');
+        $company = \Request::get('src');
+
+        //$dst = $phone_no;
+
+
+        $qry = DB::table('cdrs');
+        if (Input::has('datefrom'))
+        {
+            $qry->where('calldate', '>=', $datefrom. ' 00:00:00');
+        }
+        if (Input::has('phone_no'))
+        {
+            $qry->where('dst','=', $phone_no);
+        }
+
+
+
+        $cdrs = $qry
+            ->orderBy('calldate', 'DESC')
+            ->paginate(10);
+
+
+        return view('recordings.mem_list')
+                ->withCdrs($cdrs)
+                ->withRec70($rec70);
+    }
 }
